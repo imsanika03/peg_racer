@@ -28,7 +28,7 @@ This repository contains the code (Data collection, training, comparison with ba
 1. Clone the repo
 
     ```bash
-   git clone https://github.com/dvij542/alpha-RACER
+   git clone https://github.com/sastry-group/alpha-RACER.git
     ```
 
 2. Install dependencies
