@@ -1,5 +1,0 @@
-Metadata-Version: 2.4
-Name: car-ros2-env
-Version: 0.0.1
-Summary: RL envs for car dynamics
-Requires-Python: >=3.9

@@ -371,12 +371,16 @@ def build_env_functions(params: DynamicParams,
 
     return jax_reset, jax_step
 
-def load_path(waypoint_type): 
+def load_path(waypoint_type):
+        import os
         yaml_content = yaml.load(open(waypoint_type, 'r'), Loader=yaml.FullLoader)
         centerline_file = yaml_content['track_info']['centerline_file'][:-4]
         ox = yaml_content['track_info']['ox']
         oy = yaml_content['track_info']['oy']
-        df = pd.read_csv('/Users/sanikabharvirkar/Documents/alpha-RACER/ref_trajs/' + centerline_file + '_with_speeds.csv')
+        # Get the repository root directory (3 levels up from this file)
+        repo_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+        ref_trajs_path = os.path.join(repo_root, 'ref_trajs', centerline_file + '_with_speeds.csv')
+        df = pd.read_csv(ref_trajs_path)
         if waypoint_type.find('num') != -1:
             return np.array(df.iloc[:-1,:])*yaml_content['track_info']['scale'] + np.array([0, ox, oy, 0])
         else :
@@ -386,10 +390,13 @@ def load_path(waypoint_type):
 
 EP_LEN = 500
 
-def build_step_and_reset(num_envs): 
+def build_step_and_reset(num_envs):
+    import os
     params = DynamicParams(num_envs=num_envs, DT=0.1, Sa=0.34, Sb=0.0, Ta=20., Tb=0., mu=0.5, delay=4)
 
-    path_rn = "/Users/sanikabharvirkar/Documents/alpha-RACER/simulators/params-num.yaml"
+    # Get the repository root directory (3 levels up from this file)
+    repo_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    path_rn = os.path.join(repo_root, 'simulators', 'params-num.yaml')
     path = load_path(path_rn)
     spec = init_waypoints(kind='custom', dt=0.1, H=9, speed=1.0, path=jnp.array(path), scale=6.5)
     track_L = float(path[-1,0])
