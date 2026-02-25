@@ -124,8 +124,8 @@ class WaypointGenerator:
             ox = yaml_content['track_info']['ox']
             oy = yaml_content['track_info']['oy']
             self.fn = custom_fn
-            df = pd.read_csv('/Users/sanikabharvirkar/Documents/alpha-RACER/ref_trajs/' + centerline_file + '_with_speeds.csv')
-            df_raceline = pd.read_csv('/Users/sanikabharvirkar/Documents/alpha-RACER/ref_trajs/' + centerline_file + '_raceline_with_speeds.csv')
+            df = pd.read_csv('/Users/sanikabharvirkar/Documents/perl/alpha-RACER/ref_trajs/' + centerline_file + '_with_speeds.csv')
+            df_raceline = pd.read_csv('/Users/sanikabharvirkar/Documents/perl/alpha-RACER/ref_trajs/' + centerline_file + '_raceline_with_speeds.csv')
             self.raceline = np.array(df_raceline.iloc[:,:4]) + np.array([0, ox, oy, 0])
             self.raceline_dev = 2*np.array(df_raceline.iloc[:,4])
             # print(self.path)

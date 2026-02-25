@@ -5,5 +5,6 @@
     ],
     "python.analysis.extraPaths": [
         "/opt/ros/iron/lib/python3.10/site-packages"
-    ]
+    ],
+    "cmake.sourceDirectory": "/Users/sanikabharvirkar/Documents/alpha-RACER/SimulationPackage_v2.1/ros_ws_aux/src/npc_controller_msgs"
 }

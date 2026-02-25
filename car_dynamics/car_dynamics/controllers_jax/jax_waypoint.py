@@ -36,7 +36,7 @@ def counter_oval(theta: jnp.ndarray) -> jnp.ndarray:
 
     center = jnp.array([0.0, 0.0])
     x_radius = 1.2
-    y_radius = 1.2, 1.4
+    y_radius = 1.4
 
     return center + jnp.array([x_radius*jnp.cos(theta), y_radius*jnp.sin(theta)])
 

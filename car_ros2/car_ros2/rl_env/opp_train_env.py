@@ -41,9 +41,9 @@ class RLMultiFromCarsEnv(gym.Env):
         self.wp2 = WaypointGenerator(trajectory, DT, 9, 1.0)
 
         self.action_space = Box(low=-1.0, high=1.0, shape=(2,), dtype=np.float32)
-        self.observation_space = Box(low=-np.inf, high=np.inf, shape=(15,), dtype=np.float32)
+        self.observation_space = Box(low=-np.inf, high=np.inf, shape=(17,), dtype=np.float32)
 
-        self.oracle_observation_space = Box(low=-np.inf, high=np.inf, shape=(45,), dtype=np.float32)
+        self.oracle_observation_space = Box(low=-np.inf, high=np.inf, shape=(51,), dtype=np.float32)
 
         self.t = 0
         self._last_s = None

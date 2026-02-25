@@ -759,6 +759,7 @@ class CarNode(Node):
                 for item in self.n_wins:
                     f.write("%s\n" % item)
             exit(0)
+            
         mu_factor = 1.
         status = Int8()
         px, py, psi, vx, vy, omega = self.obs_state().tolist()
