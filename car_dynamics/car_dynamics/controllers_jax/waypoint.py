@@ -1,9 +1,10 @@
+import os
 import jax
 import jax.numpy as jnp
 import numpy as np
 import pandas as pd
 import yaml
-import time 
+import time
 
 
 def counter_circle(theta):
@@ -124,8 +125,10 @@ class WaypointGenerator:
             ox = yaml_content['track_info']['ox']
             oy = yaml_content['track_info']['oy']
             self.fn = custom_fn
-            df = pd.read_csv('/Users/sanikabharvirkar/Documents/perl/alpha-RACER/ref_trajs/' + centerline_file + '_with_speeds.csv')
-            df_raceline = pd.read_csv('/Users/sanikabharvirkar/Documents/perl/alpha-RACER/ref_trajs/' + centerline_file + '_raceline_with_speeds.csv')
+            _repo_root = os.path.abspath(os.path.join(os.path.dirname(waypoint_type), '..'))
+            _ref_trajs_dir = os.path.join(_repo_root, 'ref_trajs')
+            df = pd.read_csv(os.path.join(_ref_trajs_dir, centerline_file + '_with_speeds.csv'))
+            df_raceline = pd.read_csv(os.path.join(_ref_trajs_dir, centerline_file + '_raceline_with_speeds.csv'))
             self.raceline = np.array(df_raceline.iloc[:,:4]) + np.array([0, ox, oy, 0])
             self.raceline_dev = 2*np.array(df_raceline.iloc[:,4])
             # print(self.path)
